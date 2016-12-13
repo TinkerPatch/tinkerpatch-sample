@@ -35,14 +35,10 @@ import android.os.Build;
 import android.support.multidex.MultiDex;
 
 import com.tencent.tinker.anno.DefaultLifeCycle;
-import com.tencent.tinker.app.TinkerManager;
-import com.tencent.tinker.app.TinkerServerManager;
-import com.tencent.tinker.lib.tinker.Tinker;
 import com.tencent.tinker.loader.app.ApplicationLifeCycle;
 import com.tencent.tinker.loader.app.DefaultApplicationLike;
 import com.tencent.tinker.loader.shareutil.ShareConstants;
-
-import tinker.sample.android.BuildConfig;
+import com.tinkerpatch.sdk.TinkerPatch;
 
 /**
  * because you can not use any other class in your application, we need to
@@ -107,15 +103,8 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         //you must install multiDex whatever tinker is installed!
         MultiDex.install(base);
 
-        //初始化Tinker
-        TinkerManager.installTinker(this);
-        //初始化TinkerPatch SDK
-        TinkerServerManager.installTinkerServer(
-            getApplication(), Tinker.with(getApplication()), 3,
-            BuildConfig.APP_KEY, BuildConfig.APP_VERSION, "default"
-        );
+
         //开始检查是否有补丁，这里配置的是每隔访问3小时服务器是否有更新。
-        TinkerServerManager.checkTinkerUpdate(false);
-        //其他初始化，请避免这样的调用getApplication().getApplicationContext()
+        TinkerPatch.init(this);
     }
 }

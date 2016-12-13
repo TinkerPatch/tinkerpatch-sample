@@ -30,13 +30,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.tencent.tinker.app.TinkerServerManager;
-import com.tencent.tinker.app.TinkerServerUtils;
 import com.tencent.tinker.lib.tinker.Tinker;
 import com.tencent.tinker.lib.util.TinkerLog;
-import com.tencent.tinker.server.client.ConfigRequestCallback;
+import com.tinkerpatch.sdk.TinkerPatch;
+import com.tinkerpatch.sdk.server.callback.ConfigRequestCallback;
+
+import java.util.HashMap;
 
 import tinker.sample.android.R;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Tinker.MainActivity";
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         requestPatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TinkerServerManager.checkTinkerUpdate(true);
+                TinkerPatch.with().fetchPatchUpdate(true);
             }
         });
 
@@ -64,10 +66,11 @@ public class MainActivity extends AppCompatActivity {
         requestConfigButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TinkerServerManager.getDynamicConfig(new ConfigRequestCallback() {
+                TinkerPatch.with().fetchDynamicConfig(new ConfigRequestCallback() {
+
                     @Override
-                    public void onSuccess(String s) {
-                        TinkerLog.w(TAG, "request config success, config:" + s);
+                    public void onSuccess(HashMap<String, String> configs) {
+                        TinkerLog.w(TAG, "request config success, config:" + configs);
                     }
 
                     @Override
@@ -102,15 +105,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         Log.e(TAG, "i am on onResume");
 //        Log.e(TAG, "i am on patch onResume");
-
         super.onResume();
-        TinkerServerUtils.setBackground(false);
 
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        TinkerServerUtils.setBackground(true);
     }
 }
