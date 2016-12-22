@@ -30,8 +30,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.tencent.tinker.lib.tinker.Tinker;
 import com.tencent.tinker.lib.util.TinkerLog;
+import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
 import com.tinkerpatch.sdk.TinkerPatch;
 import com.tinkerpatch.sdk.server.callback.ConfigRequestCallback;
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         Log.e(TAG, "i am on onCreate classloader:" + MainActivity.class.getClassLoader().toString());
         //test resource change
         Log.e(TAG, "i am on onCreate string:" + getResources().getString(R.string.test_resource));
-//        Log.e(TAG, "i am on patch onCreate");
+        Log.e(TAG, "i am on patch onCreate");
 
         Button requestPatchButton = (Button) findViewById(R.id.requestPatch);
 
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         cleanPatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Tinker.with(getApplicationContext()).cleanPatch();
+                TinkerPatch.with().cleanPatch();
             }
         });
 
@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         killSelfButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ShareTinkerInternals.killAllOtherProcess(getApplicationContext());
                 android.os.Process.killProcess(android.os.Process.myPid());
             }
         });

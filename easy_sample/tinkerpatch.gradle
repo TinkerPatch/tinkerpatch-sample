@@ -2,30 +2,28 @@ apply plugin: 'tinkerpatch-support'
 
 def bakPath = file("${buildDir}/bakApk/")
 
-def appName = "app-debug-1018-17-32-47"
+def appName = "easy_sample-5.0.0-1222-21-16-42"
 
 tinkerpatchSupport {
     tinkerEnable = true
     appKey = "f938475486f91936"
-    appVersion = "4.0.0"
-
+    appVersion = "5.0.0"
+    reflectApplication = true
     autoBackupApkPath = "${bakPath}"
 
-    baseApkFile = "${bakPath}/${appName}.apk"
-    baseProguardMappingFile = "${bakPath}/${appName}-mapping.txt"
-    baseResourceRFile = "${bakPath}/${appName}-R.txt"
+    baseApkFile = "${bakPath}/${appName}/easy_sample-debug.apk"
+    baseProguardMappingFile = "${bakPath}/${appName}/easy_sample-debug-mapping.txt"
+    baseResourceRFile = "${bakPath}/${appName}/easy_sample-debug-R.txt"
 }
 
 tinkerPatch {
     ignoreWarning = false
     useSign = true
-
     dex {
         dexMode = "jar"
         pattern = ["classes*.dex"]
         loader = []
     }
-
     lib {
         pattern = ["lib/*/*.so"]
     }
@@ -41,5 +39,8 @@ tinkerPatch {
     sevenZip {
         zipArtifact = "com.tencent.mm:SevenZip:1.1.10"
 //        path = "/usr/local/bin/7za"
+    }
+    buildConfig {
+        keepDexApply = false
     }
 }

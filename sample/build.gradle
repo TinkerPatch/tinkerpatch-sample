@@ -38,16 +38,6 @@ android {
         versionCode 1
         multiDexEnabled true
     }
-    //use to test flavors support
-//    productFlavors {
-//        flavor1 {
-//            applicationId 'tinker.sample.android.flavor1'
-//        }
-//
-//        flavor2 {
-//            applicationId 'tinker.sample.android.flavor2'
-//        }
-//    }
 
     buildTypes {
         release {

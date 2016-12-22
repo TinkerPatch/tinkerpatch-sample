@@ -4,19 +4,11 @@
 
     <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="22"/>
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <application
         android:name=".app.SampleApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-
-        <service
-            android:name="com.tencent.tinker.app.service.TinkerServerResultService"
-            android:exported="false"/>
 
         <activity android:name=".app.MainActivity">
             <intent-filter>
