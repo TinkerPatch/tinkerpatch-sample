@@ -2,18 +2,18 @@ apply plugin: 'tinkerpatch-support'
 
 def bakPath = file("${buildDir}/bakApk/")
 
-def appName = "easy_sample-5.0.0-1222-21-16-42"
+def appName = "app-5.0.0-1223-13-41-43"
 
 tinkerpatchSupport {
     tinkerEnable = true
-    appKey = "f938475486f91936"
-    appVersion = "5.0.0"
-    reflectApplication = true
+    appKey = "f828475486f91936"
+    appVersion = "1.0.0"
+
     autoBackupApkPath = "${bakPath}"
 
-    baseApkFile = "${bakPath}/${appName}/easy_sample-debug.apk"
-    baseProguardMappingFile = "${bakPath}/${appName}/easy_sample-debug-mapping.txt"
-    baseResourceRFile = "${bakPath}/${appName}/easy_sample-debug-R.txt"
+    baseApkFile = "${bakPath}/${appName}/app-debug.apk"
+    baseProguardMappingFile = "${bakPath}/${appName}/app-debug-mapping.txt"
+    baseResourceRFile = "${bakPath}/${appName}/app-debug-R.txt"
 }
 
 tinkerPatch {

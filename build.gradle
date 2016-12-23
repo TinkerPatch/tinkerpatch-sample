@@ -9,8 +9,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
 
-        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:1.7.6"
-        classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:1.0.0"
+        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_PATCH_VERSION}"
+        classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:${TINKER_PATCH_VERSION}"
     }
 }
 
@@ -33,44 +33,6 @@ subprojects {
     tasks.withType(JavaCompile) {
         sourceCompatibility = JavaVersion.VERSION_1_7
         targetCompatibility = JavaVersion.VERSION_1_7
-    }
-}
-
-subprojects { project ->
-    if (project.name.contains("sample") || project.name.contains("example")) { return; }
-    repositories {
-        jcenter()
-    }
-    apply plugin: 'checkstyle'
-
-    checkstyle {
-        toolVersion = '6.12.1'
-    }
-
-    checkstyle {
-        configFile = rootProject.file('checkstyle.xml')
-        configProperties.checkStyleConfigDir = rootProject.rootDir
-    }
-
-    task checkstyle(type: Checkstyle) {
-        source 'src'
-        include '**/*.java'
-        exclude '**/gen/**'
-
-        // empty classpath
-        classpath = files()
-    }
-
-    afterEvaluate {
-        if (project.tasks.findByName('check')) {
-            check.dependsOn('checkstyle')
-        }
-    }
-
-    gradle.projectsEvaluated {
-        tasks.withType(JavaCompile) {
-            options.compilerArgs << '-Xlint:unchecked' << '-Xlint:deprecation'
-        }
     }
 }
 

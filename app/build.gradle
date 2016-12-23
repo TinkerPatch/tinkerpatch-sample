@@ -8,15 +8,8 @@ dependencies {
     compile "com.android.support:appcompat-v7:23.1.1"
     compile "com.android.support:multidex:1.0.1"
 
-    compile("com.tinkerpatch.sdk:tinkerpatch-sdk:1.0.0") { changing = true }
-
-    /* use for developer */
-    provided("com.tencent.tinker:tinker-android-anno:1.7.6") { changing = true }
-    compile("com.tencent.tinker:tinker-android-lib:1.7.6") { changing = true }
-    compile("com.tencent.tinker:tinker-android-loader:1.7.6") { changing = true }
-    compile("com.tencent.tinker:aosp-dexutils:1.7.6") { changing = true }
-    compile("com.tencent.tinker:bsdiff-util:1.7.6") { changing = true }
-    compile("com.tencent.tinker:tinker-commons:1.7.6") { changing = true }
+    provided("com.tencent.tinker:tinker-android-anno:${TINKER_PATCH_VERSION}") { changing = true }
+    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKER_PATCH_VERSION}") { changing = true }
 }
 
 
