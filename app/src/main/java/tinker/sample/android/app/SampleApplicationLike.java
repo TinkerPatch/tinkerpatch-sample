@@ -127,6 +127,7 @@ public class SampleApplicationLike extends DefaultApplicationLike {
 
     /**
      * 在这里给出TinkerPatch的所有接口解释
+     * 更详细的解释请参考:http://tinkerpatch.com/Docs/api
      */
     private void useSample() {
         TinkerPatch.init(this)
@@ -185,6 +186,7 @@ public class SampleApplicationLike extends DefaultApplicationLike {
 
     /**
      * 自定义Tinker类的高级用法
+     * 更详细的解释请参考:http://tinkerpatch.com/Docs/api
      */
     private void complexSample() {
         TinkerPatch.Builder builder = new TinkerPatch.Builder(this);

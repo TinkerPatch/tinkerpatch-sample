@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button requestPatchButton = (Button) findViewById(R.id.requestPatch);
 
+        //immediately 为 true, 每次强制访问服务器更新
         requestPatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button requestConfigButton = (Button) findViewById(R.id.requestConfig);
 
+        //immediately 为 true, 每次强制访问服务器更新
         requestConfigButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
