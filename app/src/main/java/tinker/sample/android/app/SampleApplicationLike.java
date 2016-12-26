@@ -185,7 +185,7 @@ public class SampleApplicationLike extends DefaultApplicationLike {
     }
 
     /**
-     * 自定义Tinker类的高级用法
+     * 自定义Tinker类的高级用法,一般不推荐使用
      * 更详细的解释请参考:http://tinkerpatch.com/Docs/api
      */
     private void complexSample() {
