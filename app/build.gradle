@@ -1,13 +1,11 @@
 apply plugin: 'com.android.application'
 
-
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile "com.android.support:appcompat-v7:23.1.1"
     compile "com.android.support:multidex:1.0.1"
-
+    //若使用annotation需要单独引用,对于tinker的其他库都无需再引用
     provided("com.tencent.tinker:tinker-android-anno:${TINKER_VERSION}") { changing = true }
     compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKERPATCH_VERSION}") { changing = true }
 }
