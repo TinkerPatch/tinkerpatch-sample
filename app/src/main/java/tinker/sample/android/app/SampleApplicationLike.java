@@ -115,7 +115,11 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         super.onBaseContextAttached(base);
         //you must install multiDex whatever tinker is installed!
         MultiDex.install(base);
+    }
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
         //开始检查是否有补丁，这里配置的是每隔访问3小时服务器是否有更新。
         TinkerPatch.init(this)
             .reflectPatchLibrary()
