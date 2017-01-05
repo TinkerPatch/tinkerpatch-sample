@@ -4,4 +4,4 @@
 [![Download](https://api.bintray.com/packages/simsun/maven/tinkerpatch-android-sdk/images/download.svg) ](https://bintray.com/simsun/maven/tinkerpatch-android-sdk/_latestVersion)
 
 
-[相关文档](http://tinkerpatch.com/Docs)
+[相关文档](http://tinkerpatch.com/Docs/intro)
