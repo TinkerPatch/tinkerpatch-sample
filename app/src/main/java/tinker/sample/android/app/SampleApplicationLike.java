@@ -29,8 +29,6 @@ import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.os.Build;
 import android.support.multidex.MultiDex;
 import android.util.Log;
@@ -81,16 +79,12 @@ import java.util.HashMap;
 public class SampleApplicationLike extends DefaultApplicationLike {
     private static final String TAG = "Tinker.SampleAppLike";
 
-    public SampleApplicationLike(
-        Application application,
-        int tinkerFlags,
-        boolean tinkerLoadVerifyFlag,
-        long applicationStartElapsedTime,
-        long applicationStartMillisTime,
-        Intent tinkerResultIntent,
-        Resources[] resources,
-        ClassLoader[] classLoader,
-        AssetManager[] assetManager
+    public SampleApplicationLike(Application application,
+                                 int tinkerFlags,
+                                 boolean tinkerLoadVerifyFlag,
+                                 long applicationStartElapsedTime,
+                                 long applicationStartMillisTime,
+                                 Intent tinkerResultIntent
     ) {
         super(
             application,
@@ -98,10 +92,7 @@ public class SampleApplicationLike extends DefaultApplicationLike {
             tinkerLoadVerifyFlag,
             applicationStartElapsedTime,
             applicationStartMillisTime,
-            tinkerResultIntent,
-            resources,
-            classLoader,
-            assetManager
+            tinkerResultIntent
         );
     }
 
