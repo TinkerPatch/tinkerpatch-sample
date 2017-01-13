@@ -10,6 +10,8 @@ def appName = "app-1.0.0-1223-13-41-43"
  */
 tinkerpatchSupport {
     tinkerEnable = true
+    reflectApplication = false
+
     appKey = "f828475486f91936"
     appVersion = "1.0.0"
 
