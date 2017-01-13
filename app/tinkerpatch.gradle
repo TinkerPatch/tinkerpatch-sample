@@ -10,6 +10,8 @@ def appName = "app-1.0.0-0113-21-50-44"
  */
 tinkerpatchSupport {
     tinkerEnable = true
+    reflectApplication = false
+
     appKey = "f938475486f91936"
     autoBackupApkPath = "${bakPath}"
 
