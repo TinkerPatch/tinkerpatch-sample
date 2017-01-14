@@ -9,6 +9,7 @@ def appName = "app-1.0.0-0113-21-50-44"
  * http://tinkerpatch.com/Docs/SDK
  */
 tinkerpatchSupport {
+    /** 可以在debug的时候关闭 tinkerPatch **/
     tinkerEnable = true
     reflectApplication = false
 
@@ -39,6 +40,15 @@ tinkerpatchSupport {
             baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
             baseResourceRFile = "${pathPrefix}/${name}-R.txt"
         }
+    }
+}
+
+/**
+ * 用于用户在代码中判断tinkerPatch是否被使能
+ */
+android {
+    defaultConfig {
+        buildConfigField "boolean", "TINKER_ENABLE", "${tinkerpatchSupport.tinkerEnable}"
     }
 }
 

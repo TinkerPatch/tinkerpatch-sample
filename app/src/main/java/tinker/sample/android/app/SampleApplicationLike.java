@@ -51,6 +51,8 @@ import com.tinkerpatch.sdk.tinker.service.TinkerServerResultService;
 
 import java.util.HashMap;
 
+import tinker.sample.android.BuildConfig;
+
 /**
  * because you can not use any other class in your application, we need to
  * move your implement of Application to {@link ApplicationLifeCycle}
@@ -111,14 +113,16 @@ public class SampleApplicationLike extends DefaultApplicationLike {
     @Override
     public void onCreate() {
         super.onCreate();
-        //开始检查是否有补丁，这里配置的是每隔访问3小时服务器是否有更新。
-        TinkerPatch.init(this)
-            .reflectPatchLibrary()
-            .setPatchRollbackOnScreenOff(true)
-            .setPatchRestartOnSrceenOff(true);
+        if (BuildConfig.TINKER_ENABLE) {
+            //开始检查是否有补丁，这里配置的是每隔访问3小时服务器是否有更新。
+            TinkerPatch.init(this)
+                .reflectPatchLibrary()
+                .setPatchRollbackOnScreenOff(true)
+                .setPatchRestartOnSrceenOff(true);
 
-        //每隔3个小时去访问后台时候有更新,通过handler实现轮训的效果
-        new FetchPatchHandler().fetchPatchWithInterval(3);
+            //每隔3个小时去访问后台时候有更新,通过handler实现轮训的效果
+            new FetchPatchHandler().fetchPatchWithInterval(3);
+        }
     }
 
     /**
