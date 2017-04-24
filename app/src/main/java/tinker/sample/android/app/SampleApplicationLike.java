@@ -110,9 +110,16 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         MultiDex.install(base);
     }
 
+    /**
+     * 我们需要确保至少对主进程跟patch进程初始化 TinkerPatch
+     */
     @Override
     public void onCreate() {
         super.onCreate();
+        initTinker();
+    }
+
+    private void initTinker() {
         if (BuildConfig.TINKER_ENABLE) {
             //开始检查是否有补丁，这里配置的是每隔访问3小时服务器是否有更新。
             TinkerPatch.init(this)
@@ -123,8 +130,9 @@ public class SampleApplicationLike extends DefaultApplicationLike {
             // 获取当前的补丁版本
             Log.d(TAG, "current patch version is " + TinkerPatch.with().getPatchVersion());
 
-            //每隔3个小时去访问后台时候有更新,通过handler实现轮训的效果
-            new FetchPatchHandler().fetchPatchWithInterval(3);
+            // 每隔3个小时去访问后台时候有更新, 通过 handler 实现轮询的效果
+            // 默认 setFetchPatchIntervalByHours 只是设置调用的频率限制，并没有去轮询
+            TinkerPatch.with().startPoll(3);
         }
     }
 
