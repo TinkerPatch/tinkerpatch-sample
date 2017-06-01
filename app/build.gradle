@@ -28,13 +28,16 @@ android {
         versionName "1.0.0"
         versionCode 1
         multiDexEnabled true
+        multiDexKeepProguard file("tinkerMultidexKeep.pro") //keep specific classes using proguard syntax
     }
 
     buildTypes {
         release {
             minifyEnabled true
+            shrinkResources true
             signingConfig signingConfigs.debug
-            proguardFiles getDefaultProguardFile('proguard-android.txt')
+
+            proguardFiles 'proguardRules.pro', getDefaultProguardFile('proguard-android.txt')
         }
         debug {
             debuggable true
