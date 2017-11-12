@@ -4,7 +4,7 @@ apply plugin: 'tinkerpatch-support'
  * TODO: 请按自己的需求修改为适应自己工程的参数
  */
 def bakPath = file("${buildDir}/bakApk/")
-def baseInfo = "app-0115-23-11-20"
+def baseInfo = "app-1.0.0-1112-12-49-34"
 def variantName = "debug"
 
 /**
@@ -20,6 +20,16 @@ tinkerpatchSupport {
      **/
     tinkerEnable = true
     reflectApplication = false
+    /**
+     * 是否开启加固模式，只能在APK将要进行加固时使用，否则会patch失败。
+     * 如果只在某个渠道使用了加固，可使用多flavors配置
+     **/
+    protectedApp = false
+    /**
+     * 实验功能
+     * 补丁是否支持新增 Activity (新增Activity的exported属性必须为false)
+     **/
+    supportComponent = true
 
     autoBackupApkPath = "${bakPath}"
 

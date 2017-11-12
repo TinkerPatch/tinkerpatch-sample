@@ -2,10 +2,11 @@
 buildscript {
     repositories {
         //mavenLocal()
+        google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:3.0.0'
         //无需再单独引用tinker的其他库
         classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:${TINKERPATCH_VERSION}"
     }
@@ -14,6 +15,7 @@ buildscript {
 allprojects {
     repositories {
         //mavenLocal()
+        google()
         jcenter()
     }
 }
